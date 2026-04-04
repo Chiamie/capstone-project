@@ -1,0 +1,150 @@
+FarmEstate
+- id
+- name
+- location
+- totalSize
+
+Cluster
+- id
+- name
+- estateId
+- primaryCropId
+- farmingModel (MONOCROP, HYBRID)
+- seasonId
+
+Plot
+- id
+- clusterId
+- size
+- soilType
+- status (AVAILABLE, ASSIGNED, IN_USE)
+- assignedFarmerId
+
+
+Crop
+- id
+- name
+- category
+- growthDuration
+
+CropPlan
+- id
+- plotId
+- seasonId
+- primaryCropId
+- intercroppingEnabled (boolean)
+
+CropPlanItem
+- id
+- cropPlanId
+- cropId
+- role (PRIMARY, INTERCROP)
+- spacingPattern
+- expectedYield
+
+
+
+FarmCycle
+- id
+- plotId
+- cropPlanId
+- startDate
+- endDate
+- status (PLANNED, ACTIVE, HARVESTED)
+
+Task
+- id
+- farmCycleId
+- title
+- description
+- dueDate
+- status
+- assignedTo (Farmer)
+
+
+
+Product
+- id
+- farmerId
+- cropId
+- quantityAvailable
+- pricePerUnit
+
+Order
+- id
+- buyerId
+- status
+- totalAmount
+
+OrderItem
+- id
+- orderId
+- productId
+- quantity
+- price
+
+User
+- id
+- name
+- phoneNumber
+- email
+- password
+- role (ENUM: FARMER, ADMIN, PARTNER)
+- status
+- createdAt
+
+Farmer extends User
+- farmExperienceLevel
+- assignedPlots[]
+
+Admin extends User
+- permissions[]
+
+Partner extends User
+- organizationName
+- partnerType (ENUM: BUYER, SUPPLIER, FINANCIER)
+
+
+FarmAsset
+- id
+- plotId
+- cropPlanId
+- totalUnits
+- unitPrice
+- expectedROI
+- status (OPEN, FUNDED, CLOSED)
+
+
+Token
+- id
+- farmAssetId
+- ownerId (User)
+- unitsOwned
+- purchaseDate
+
+
+InvestmentTransaction
+- id
+- userId
+- farmAssetId
+- amount
+- unitsPurchased
+- status (ACTIVE, COMPLETED, LOST)
+- expectedReturn
+- actualReturn
+- createdAt
+
+
+YieldDistribution
+- id
+- farmAssetId
+- totalRevenue
+- distributedAt
+
+
+Payout
+- id
+- userId
+- farmAssetId
+- amount
+- status
