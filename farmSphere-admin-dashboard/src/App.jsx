@@ -12,12 +12,22 @@ import Investments from "./app/admin/investments/page";
 import Marketplace from "./app/admin/marketplace/page";
 import Tools from "./app/admin/tools/page";
 
+
+
+import LoginPage from "./login/Login.jsx";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Redirect root → admin dashboard */}
-        <Route path="/" element={<Navigate to="/admin" />} />
+        {/* <Route path="/" element={<Navigate to="/admin" />} /> */}
+
+        {/* Redirect empty path to login */}
+        <Route path="/" element={<Navigate to="/login" />} />
+
+        <Route path="/login" element={<LoginPage />} />
+        
 
         {/* Admin Layout Wrapper */}
         <Route path="/admin" element={<AdminLayout />}>
