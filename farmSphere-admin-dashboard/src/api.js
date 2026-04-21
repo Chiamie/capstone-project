@@ -8,7 +8,7 @@ export const authApi = axios.create({
 });
 
 const api = axios.create({
-  baseURL: "http://localhost:8080/admin",
+  baseURL: "http://localhost:8080/admin/estate",
 });
 
 api.interceptors.request.use((config) => {
