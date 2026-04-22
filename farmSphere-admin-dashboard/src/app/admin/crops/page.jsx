@@ -389,19 +389,19 @@ export default function CropsPage() {
 
 
   const getCropById = async (id) => {
-    const res = await api.get(`/admin/farming/get/crop/${id}`);
+    const res = await cropApi.get(`/get/crop/${id}`);
     return res.data.data;
   };
 
   const getCropsByCategory = async (category) => {
-    const res = await api.get(
-      `/admin/farming/get/crop/category/${category}`
+    const res = await cropApi.get(
+      `/get/crop/category/${category}`
     );
     return res.data.data;
   };
 
   const createCropPlan = async (payload) => {
-    return await api.post("/admin/farming/create/crop-plans", payload);
+    return await cropApi.post("/create/crop-plans", payload);
   };
 
   const handleCreatePlan = async () => {
